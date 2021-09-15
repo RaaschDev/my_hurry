@@ -22,6 +22,10 @@ class AuthPageState extends State<AuthPage> {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: Container(
         height: screenSize.height,
         color: AppColors.backGroundColor,
@@ -63,7 +67,8 @@ class AuthPageState extends State<AuthPage> {
                     PrimaryButton(
                       text: 'ENTRAR',
                       onPressed: () async {
-                        store.login(passwordController.text, emailController.text);
+                        store.login(
+                            passwordController.text, emailController.text);
                       },
                     ),
                     SizedBox(
@@ -82,7 +87,8 @@ class AuthPageState extends State<AuthPage> {
                           },
                           child: Text(
                             'Registre-se',
-                            style: TextStyle(color: AppColors.primaryColor, fontSize: 18),
+                            style: TextStyle(
+                                color: AppColors.primaryColor, fontSize: 18),
                           ),
                         )
                       ],

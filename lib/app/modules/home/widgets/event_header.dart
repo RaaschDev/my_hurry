@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:hurry/app/modules/src/colors.dart';
 
 import 'buttons.dart';
@@ -46,7 +47,9 @@ class EventHeader extends StatelessWidget {
               height: 40,
             ),
             ButtonsWidget(
-              onPressed: () {},
+              onPressed: () {
+                Modular.to.pushNamed('/event/lineup');
+              },
               text: 'LINE UP',
             ),
             SizedBox(

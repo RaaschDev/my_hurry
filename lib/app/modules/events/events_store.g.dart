@@ -9,39 +9,56 @@ part of 'events_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$EventsStore on _EventsStoreBase, Store {
-  final _$valueAtom = Atom(name: '_EventsStoreBase.value');
+  final _$listArtistAtom = Atom(name: '_EventsStoreBase.listArtist');
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  ObservableList<ArtistModel> get listArtist {
+    _$listArtistAtom.reportRead();
+    return super.listArtist;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set listArtist(ObservableList<ArtistModel> value) {
+    _$listArtistAtom.reportWrite(value, super.listArtist, () {
+      super.listArtist = value;
     });
   }
 
-  final _$_EventsStoreBaseActionController =
-      ActionController(name: '_EventsStoreBase');
+  final _$listConsumablesAtom = Atom(name: '_EventsStoreBase.listConsumables');
 
   @override
-  void increment() {
-    final _$actionInfo = _$_EventsStoreBaseActionController.startAction(
-        name: '_EventsStoreBase.increment');
-    try {
-      return super.increment();
-    } finally {
-      _$_EventsStoreBaseActionController.endAction(_$actionInfo);
-    }
+  ObservableList<ConsumableModel> get listConsumables {
+    _$listConsumablesAtom.reportRead();
+    return super.listConsumables;
+  }
+
+  @override
+  set listConsumables(ObservableList<ConsumableModel> value) {
+    _$listConsumablesAtom.reportWrite(value, super.listConsumables, () {
+      super.listConsumables = value;
+    });
+  }
+
+  final _$getArtistsAsyncAction = AsyncAction('_EventsStoreBase.getArtists');
+
+  @override
+  Future<void> getArtists(dynamic id) {
+    return _$getArtistsAsyncAction.run(() => super.getArtists(id));
+  }
+
+  final _$getConsumablesAsyncAction =
+      AsyncAction('_EventsStoreBase.getConsumables');
+
+  @override
+  Future<void> getConsumables(dynamic id) {
+    return _$getConsumablesAsyncAction.run(() => super.getConsumables(id));
   }
 
   @override
   String toString() {
     return '''
-value: ${value}
+listArtist: ${listArtist},
+listConsumables: ${listConsumables}
     ''';
   }
 }
