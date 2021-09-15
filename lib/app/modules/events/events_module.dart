@@ -1,7 +1,7 @@
-import 'package:hurry/app/modules/events/events_Page.dart';
 import 'package:hurry/app/modules/events/events_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:hurry/app/modules/events/pages/line_up.dart';
+import 'package:hurry/app/modules/events/pages/events_page.dart';
 
 class EventsModule extends Module {
   @override
