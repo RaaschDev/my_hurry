@@ -42,47 +42,6 @@ class EventHeader extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(
-              height: 40,
-            ),
-            ButtonsWidget(
-              onPressed: () {},
-              text: 'LINE UP',
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            ButtonsWidget(
-              onPressed: () {},
-              text: 'Consumiveis',
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            ButtonsWidget(
-              onPressed: () {},
-              text: 'Endereco',
-            ),
-            SizedBox(
-              height: 100,
-            ),
-            MaterialButton(
-              onPressed: () {},
-              minWidth: double.maxFinite,
-              height: 62,
-              color: AppColors.primaryColor,
-              child: Text(
-                'Comprar',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
           ],
         ),
       ),
