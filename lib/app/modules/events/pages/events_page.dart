@@ -7,6 +7,7 @@ import 'package:hurry/app/modules/events/widgets/buttons.dart';
 import 'package:hurry/app/modules/events/widgets/event_banner.dart';
 import 'package:hurry/app/modules/events/widgets/event_header.dart';
 import 'package:hurry/app/modules/src/colors.dart';
+import 'package:map_launcher/map_launcher.dart';
 
 class EventsPage extends StatefulWidget {
   final String title;
@@ -72,7 +73,9 @@ class EventsPageState extends State<EventsPage> {
                         height: 20,
                       ),
                       ButtonsWidget(
-                        onPressed: () {},
+                        onPressed: () {
+                          store.getMap();
+                        },
                         text: 'Endereco',
                       ),
                       SizedBox(

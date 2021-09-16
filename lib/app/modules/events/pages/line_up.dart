@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:hurry/app/modules/events/events_store.dart';
-import 'package:hurry/app/modules/home/domain/models/artist_model.dart';
+
 import 'package:hurry/app/modules/src/appbar/ht_default_appbar.dart';
 import 'package:hurry/app/modules/src/colors.dart';
 import 'package:hurry/app/modules/src/texts.dart';
@@ -35,7 +35,9 @@ class _LineUpPageState extends State<LineUpPage> {
                 child: Container(
                   height: 300,
                   decoration: BoxDecoration(
-                    color: Colors.red,
+                    image: DecorationImage(
+                        image: NetworkImage("${artista.img}"),
+                        fit: BoxFit.cover),
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: [
                       BoxShadow(

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:hurry/app/modules/events/domain/models/artist_model.dart';
 import 'package:hurry/app/modules/events/domain/models/consumable_model.dart';
+import 'package:map_launcher/map_launcher.dart';
 import 'package:mobx/mobx.dart';
 import 'package:http/http.dart' as http;
 part 'events_store.g.dart';
@@ -43,9 +44,17 @@ abstract class _EventsStoreBase with Store {
       dec.forEach((element) {
         listConsumables.add(ConsumableModel.fromJson(element));
       });
+      Modular.to.pushNamed("/event/consumiveis");
       print(listConsumables.first.description);
     } catch (e) {
       print(e);
     }
+  }
+
+  @action
+  Future<void> getMap() async {
+    final availableMaps = await MapLauncher.installedMaps;
+    await availableMaps.first.showMarker(
+        coords: Coords(37.759392, -122.5107336), title: "Ocean Beach");
   }
 }
