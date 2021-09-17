@@ -137,7 +137,7 @@ class _ConsumiveisState extends State<Consumiveis> {
                           itemBuilder: (context, index) {
                             var consumablesFood =
                                 eventsStore.listConsumables[index];
-                            if (consumablesFood.consumableType != 'drink') {
+                            if (consumablesFood.consumableType == 'drink') {
                               return SizedBox();
                             } else {
                               return Padding(

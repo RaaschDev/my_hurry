@@ -12,11 +12,17 @@ class HTText {
     fontSize: 18,
     fontWeight: FontWeight.w800,
   );
+  static TextStyle accentTextStyleFont = TextStyle(
+    color: AppColors.accentColor,
+    fontSize: 22,
+    fontWeight: FontWeight.w800,
+  );
   static TextStyle primaryTitleTextStyle = TextStyle(
     color: AppColors.primaryColor,
     fontSize: 22,
     fontWeight: FontWeight.w800,
   );
+
   static TextStyle primaryInputTextStyle = TextStyle(
     color: AppColors.primaryColor,
     fontSize: 18,

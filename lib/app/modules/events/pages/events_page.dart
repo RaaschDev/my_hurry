@@ -82,7 +82,9 @@ class EventsPageState extends State<EventsPage> {
                         height: 100,
                       ),
                       MaterialButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Modular.to.pushNamed("/payment");
+                        },
                         minWidth: double.maxFinite,
                         height: 62,
                         color: AppColors.primaryColor,

@@ -45,7 +45,7 @@ abstract class _EventsStoreBase with Store {
         listConsumables.add(ConsumableModel.fromJson(element));
       });
       Modular.to.pushNamed("/event/consumiveis");
-      print(listConsumables.first.description);
+      print(listConsumables.length);
     } catch (e) {
       print(e);
     }
