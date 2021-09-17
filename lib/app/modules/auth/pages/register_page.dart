@@ -41,8 +41,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   TextEditingController retype_passwordController = TextEditingController();
 
-  var cpfFormatter = MaskTextInputFormatter(mask: '###.###.###-##', filter: {"#": RegExp(r'[0-9]')});
-  var birthFormatter = MaskTextInputFormatter(mask: '##/##/####', filter: {"#": RegExp(r'[0-9]')});
+  var cpfFormatter = MaskTextInputFormatter(
+      mask: '###.###.###-##', filter: {"#": RegExp(r'[0-9]')});
+  var birthFormatter = MaskTextInputFormatter(
+      mask: '##/##/####', filter: {"#": RegExp(r'[0-9]')});
 
   PageController pageController = PageController();
   String imagePath = "";
@@ -101,15 +103,25 @@ class _RegisterPageState extends State<RegisterPage> {
                           controller: emailController,
                           inputFormater: [],
                         ),
-                        AuthInput(hint: 'Senha', obscure: true, controller: passwordController, inputFormater: []),
-                        AuthInput(hint: 'Senha2', obscure: true, controller: retype_passwordController, inputFormater: []),
+                        AuthInput(
+                            hint: 'Senha',
+                            obscure: true,
+                            controller: passwordController,
+                            inputFormater: []),
+                        AuthInput(
+                            hint: 'Senha2',
+                            obscure: true,
+                            controller: retype_passwordController,
+                            inputFormater: []),
                         SizedBox(
                           height: 20,
                         ),
                         PrimaryButton(
                           text: 'Salvar',
                           onPressed: () {
-                            if (emailController.text.isNotEmpty && passwordController.text == retype_passwordController.text) {
+                            if (emailController.text.isNotEmpty &&
+                                passwordController.text ==
+                                    retype_passwordController.text) {
                               pageController.jumpToPage(1);
                             }
                           },
@@ -133,11 +145,31 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        AuthInput(hint: 'Nome', obscure: false, controller: first_nameController, inputFormater: []),
-                        AuthInput(hint: 'Sobrenome', obscure: false, controller: last_nameController, inputFormater: []),
-                        AuthInput(hint: 'Genero', obscure: false, controller: genderController, inputFormater: []),
-                        AuthInput(hint: 'Nascimento', obscure: false, controller: birthController, inputFormater: [birthFormatter]),
-                        AuthInput(hint: 'cpf', obscure: false, controller: cpfController, inputFormater: [cpfFormatter]),
+                        AuthInput(
+                            hint: 'Nome',
+                            obscure: false,
+                            controller: first_nameController,
+                            inputFormater: []),
+                        AuthInput(
+                            hint: 'Sobrenome',
+                            obscure: false,
+                            controller: last_nameController,
+                            inputFormater: []),
+                        AuthInput(
+                            hint: 'Genero',
+                            obscure: false,
+                            controller: genderController,
+                            inputFormater: []),
+                        AuthInput(
+                            hint: 'Nascimento',
+                            obscure: false,
+                            controller: birthController,
+                            inputFormater: [birthFormatter]),
+                        AuthInput(
+                            hint: 'cpf',
+                            obscure: false,
+                            controller: cpfController,
+                            inputFormater: [cpfFormatter]),
                         Row(
                           children: [
                             Expanded(
@@ -170,7 +202,15 @@ class _RegisterPageState extends State<RegisterPage> {
                         PrimaryButton(
                             text: 'Salvar',
                             onPressed: () {
-                              store.register(emailController.text, first_nameController.text, last_nameController.text, genderController.text, birthController.text, cpfController.text, urlImage, passwordController.text);
+                              store.register(
+                                  emailController.text,
+                                  first_nameController.text,
+                                  last_nameController.text,
+                                  genderController.text,
+                                  birthController.text,
+                                  cpfController.text,
+                                  urlImage,
+                                  passwordController.text);
                             }),
                         SizedBox(
                           height: 20,

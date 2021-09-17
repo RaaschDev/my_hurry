@@ -1,7 +1,8 @@
 import 'dart:convert';
-
-import 'package:hurry/app/modules/events/domain/artist_model.dart';
-import 'package:hurry/app/modules/events/domain/consumable_model.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:hurry/app/modules/events/domain/models/artist_model.dart';
+import 'package:hurry/app/modules/events/domain/models/consumable_model.dart';
+import 'package:map_launcher/map_launcher.dart';
 import 'package:mobx/mobx.dart';
 import 'package:http/http.dart' as http;
 part 'events_store.g.dart';
@@ -13,7 +14,8 @@ abstract class _EventsStoreBase with Store {
   ObservableList<ArtistModel> listArtist = <ArtistModel>[].asObservable();
   @action
   Future<void> getArtists(id) async {
-    var meURL = Uri.parse('http://178.128.154.39:8000/api/mobile/artists/?event=$id');
+    var meURL =
+        Uri.parse('http://178.128.154.39:8000/api/mobile/artists/?event=$id');
     var response = await http.get(meURL);
     try {
       var dec = json.decode(response.body)['results'] as List;
@@ -21,6 +23,7 @@ abstract class _EventsStoreBase with Store {
       dec.forEach((element) {
         listArtist.add(ArtistModel.fromJson(element));
       });
+      Modular.to.pushNamed("/event/lineup");
       print(listArtist.first.description);
     } catch (e) {
       print(e);
@@ -28,10 +31,12 @@ abstract class _EventsStoreBase with Store {
   }
 
   @observable
-  ObservableList<ConsumableModel> listConsumables = <ConsumableModel>[].asObservable();
+  ObservableList<ConsumableModel> listConsumables =
+      <ConsumableModel>[].asObservable();
   @action
   Future<void> getConsumables(id) async {
-    var meURL = Uri.parse('http://178.128.154.39:8000/api/mobile/consumables/?event=$id');
+    var meURL = Uri.parse(
+        'http://178.128.154.39:8000/api/mobile/consumables/?event=$id');
     var response = await http.get(meURL);
     try {
       var dec = json.decode(response.body)['results'] as List;
@@ -39,9 +44,17 @@ abstract class _EventsStoreBase with Store {
       dec.forEach((element) {
         listConsumables.add(ConsumableModel.fromJson(element));
       });
-      print(listConsumables.first.description);
+      Modular.to.pushNamed("/event/consumiveis");
+      print(listConsumables.length);
     } catch (e) {
       print(e);
     }
+  }
+
+  @action
+  Future<void> getMap() async {
+    final availableMaps = await MapLauncher.installedMaps;
+    await availableMaps.first.showMarker(
+        coords: Coords(37.759392, -122.5107336), title: "Ocean Beach");
   }
 }

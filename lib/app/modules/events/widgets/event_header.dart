@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:hurry/app/modules/src/colors.dart';
 
 import 'buttons.dart';

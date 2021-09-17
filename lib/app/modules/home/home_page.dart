@@ -43,13 +43,15 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                     decoration: BoxDecoration(
                       color: Colors.green,
                       borderRadius: BorderRadius.circular(5),
-                      image: DecorationImage(image: NetworkImage('${user?.img}'), fit: BoxFit.cover),
+                      image: DecorationImage(
+                          image: NetworkImage('${user?.img}'),
+                          fit: BoxFit.cover),
                     ),
                   ),
                 )
               : TextButton(
                   onPressed: () {
-                    Modular.to.pushReplacementNamed('/auth');
+                    Modular.to.pushNamed('/auth');
                   },
                   child: Text('Login'))
         ],
