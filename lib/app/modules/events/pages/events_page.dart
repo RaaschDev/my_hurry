@@ -51,6 +51,12 @@ class EventsPageState extends State<EventsPage> {
                         start: "${event.eventModel?.start}",
                         end: "${event.eventModel?.end}",
                       ),
+                      ButtonsWidget(
+                        onPressed: () {
+                          Modular.to.pushReplacementNamed("/chat");
+                        },
+                        text: 'chat',
+                      ),
                       SizedBox(
                         height: 40,
                       ),

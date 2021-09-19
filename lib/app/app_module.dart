@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:hurry/app/modules/auth/auth_module.dart';
+import 'package:hurry/app/modules/chat/chat_module.dart';
 import 'package:hurry/app/modules/controllers/event/event_controller.dart';
 import 'package:hurry/app/modules/events/events_module.dart';
 import 'package:hurry/app/modules/home/domain/models/event_model.dart';
@@ -17,9 +18,10 @@ class AppModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ModuleRoute('/', module: HomeModule()),
+    ModuleRoute('/', module: ChatModule()),
     ModuleRoute('/auth', module: AuthModule()),
     ModuleRoute('/event', module: EventsModule()),
     ModuleRoute('/payment', module: PaymentModule()),
+    ModuleRoute('/chat', module: ChatModule()),
   ];
 }
