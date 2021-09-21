@@ -28,10 +28,6 @@ abstract class _ChatStoreBase with Store {
     if (msg != null || imgFile != null) {
       Map<String, dynamic> data = {};
       DateTime dataTime = DateTime.now();
-      data['userID'] = 001;
-      data['userSend'] = 002;
-      data['dataEnvio'] = dataTime;
-      data['from'] = 'Abner Sanlai';
 
       if (imgFile != null) {
         data['urlImg'] = '';
@@ -57,14 +53,22 @@ abstract class _ChatStoreBase with Store {
       } else {
         data['text'] = '';
       }
-      FirebaseFirestore.instance
-          .collection("chat")
-          .doc("usuario2")
-          .collection('msg')
-          .doc('user2to3')
-          .collection('mensagens')
-          .doc()
-          .set(data);
+
+      data['userID'] = 1;
+      data['userContato'] = 5;
+      data['dataEnvio'] = dataTime;
+      data['msgLida'] = false;
+      data['from'] = 'Ines Brasil';
+      data['mine'] = true;
+      sendMsg(data);
+
+      // Salva a conversa na  lado de quem recebe
+      data['userID'] = 5;
+      data['userContato'] = 1;
+      data['msgLida'] = false;
+      data['from'] = 'Ines Brasil';
+      data['mine'] = false;
+      receciveMsg(data);
     }
   }
 
@@ -76,5 +80,68 @@ abstract class _ChatStoreBase with Store {
     msgController.clear();
   }
 
-  void buscarChats() {}
+  Stream<QuerySnapshot<Object>> buscarChatContatosFireStore(String userID) {
+    return FirebaseFirestore.instance
+        .collection("chat")
+        .doc(userID)
+        .collection("msg")
+        .snapshots();
+  }
+
+  void abrirChatComUsuario(String userSendId) {}
+
+  Stream<QuerySnapshot<Object>> buscarConversa(String userId, String userChat) {
+    return FirebaseFirestore.instance
+        .collection("chat")
+        .doc(userId)
+        .collection("msg")
+        .doc(userChat)
+        .collection('mensagens')
+        .orderBy('dataEnvio')
+        .snapshots();
+  }
+
+  void sendMsg(Map<String, dynamic> data) {
+    FirebaseFirestore.instance
+        .collection("chat")
+        .doc("usuario1")
+        .collection('msg')
+        .doc('user5')
+        .set({
+      'userSendid': 5,
+      'userSend': 'Ines Brasil',
+      'photoUrl':
+          'https://th.bing.com/th/id/OIF.a5nMtXvTyueMvDhiHmkAIw?pid=ImgDet&rs=1'
+    });
+    FirebaseFirestore.instance
+        .collection("chat")
+        .doc("usuario1")
+        .collection('msg')
+        .doc('user5')
+        .collection('mensagens')
+        .doc()
+        .set(data);
+  }
+
+  void receciveMsg(Map<String, dynamic> data) {
+    FirebaseFirestore.instance
+        .collection("chat")
+        .doc("usuario5")
+        .collection('msg')
+        .doc('user1')
+        .set({
+      'userSendid': 1,
+      'userSend': 'Rafael',
+      'photoUrl':
+          ' https://th.bing.com/th/id/OIP.HQbKw7HNHrKYnMt1oLUplAHaEK?pid=ImgDet&rs=1'
+    });
+    FirebaseFirestore.instance
+        .collection("chat")
+        .doc("usuario5")
+        .collection('msg')
+        .doc('user1')
+        .collection('mensagens')
+        .doc()
+        .set(data);
+  }
 }

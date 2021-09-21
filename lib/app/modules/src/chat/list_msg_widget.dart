@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:hurry/app/modules/chat/chat_store.dart';
 import 'package:hurry/app/modules/src/chat/chat_message_widget.dart';
 import 'package:hurry/app/modules/src/texts.dart';
 
@@ -13,11 +15,9 @@ class ListMsgWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ChatStore chatStore = Modular.get();
     return StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance
-          .collection("msg")
-          .orderBy('dataEnvio')
-          .snapshots(),
+      stream: chatStore.buscarConversa('usuario1', 'user5'),
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.none:
@@ -35,6 +35,7 @@ class ListMsgWidget extends StatelessWidget {
               itemBuilder: (context, index) {
                 return ChatMessageWidget(
                   data: documents[index],
+                  userID: 5,
                 );
               },
             );

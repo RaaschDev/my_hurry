@@ -22,17 +22,24 @@ class ChatPageState extends State<ChatPage> {
     return Scaffold(
         backgroundColor: AppColors.backGroundColor,
         appBar: PreferredSize(
-          child: HTDefaultAppBar(),
-          preferredSize: Size(double.maxFinite, 150),
+          child: AppBar(
+            centerTitle: true,
+            title: Text(
+              'CHAT',
+              style: HTText.primaryInputTextStyle,
+              textAlign: TextAlign.center,
+            ),
+            iconTheme: IconThemeData(color: AppColors.primaryColor),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            leading: BackButton(),
+          ),
+          preferredSize: Size(double.maxFinite, 60),
         ),
         body: LayoutBuilder(
           builder: (_, constrains) {
             return StreamBuilder<QuerySnapshot>(
-              stream: FirebaseFirestore.instance
-                  .collection("chat")
-                  .doc("usuario1")
-                  .collection("msg").
-                  .snapshots(),
+              stream: store.buscarChatContatosFireStore('usuario1'),
               builder: (context, snapshot) {
                 switch (snapshot.connectionState) {
                   case ConnectionState.none:
@@ -41,17 +48,15 @@ class ChatPageState extends State<ChatPage> {
                       child: CircularProgressIndicator(),
                     );
                   default:
-                    List<DocumentSnapshot> documents =
-                        snapshot.data!.docs.reversed.toList();
-                    for (var i = 0; i < snapshot.s; i++) {
-                      
-                    }
-                    return ListView.builder(
-                      itemCount: documents.length,
-                      reverse: true,
-                      itemBuilder: (context, index) {
-                        return ChatUserSendWidget(data: documents[index]);
-                      },
+                    List<DocumentSnapshot> documents = snapshot.data!.docs;
+                    return Container(
+                      child: ListView.builder(
+                        itemCount: documents.length,
+                        reverse: false,
+                        itemBuilder: (context, index) {
+                          return ChatUserSendWidget(data: documents[index]);
+                        },
+                      ),
                     );
                 }
               },

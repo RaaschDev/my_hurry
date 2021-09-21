@@ -11,7 +11,7 @@ class ChatModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => ChatPage()),
+    ChildRoute('/', child: (_, args) => ChatsPage()),
     ChildRoute('/chats', child: (_, args) => ChatsPage()),
   ];
 }

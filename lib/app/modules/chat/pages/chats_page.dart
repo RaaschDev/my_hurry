@@ -21,10 +21,19 @@ class _ChatsPageState extends State<ChatsPage> {
     return Scaffold(
       backgroundColor: AppColors.backGroundColor,
       appBar: PreferredSize(
-        child: Row(
-          children: [HTDefaultAppBar()],
+        child: AppBar(
+          centerTitle: true,
+          title: Text(
+            'Conversa Com',
+            style: HTText.primaryInputTextStyle,
+            textAlign: TextAlign.center,
+          ),
+          iconTheme: IconThemeData(color: AppColors.primaryColor),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: BackButton(),
         ),
-        preferredSize: Size(double.maxFinite, 150),
+        preferredSize: Size(double.maxFinite, 60),
       ),
       body: Column(
         children: <Widget>[
