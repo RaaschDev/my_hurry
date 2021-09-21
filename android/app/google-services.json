@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "976508719072",
+    "firebase_url": "https://appchat-b665c-default-rtdb.firebaseio.com",
+    "project_id": "appchat-b665c",
+    "storage_bucket": "appchat-b665c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976508719072:android:3acb4f7bbc61292749a585",
+        "android_client_info": {
+          "package_name": "com.hurry.hurry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976508719072-tmpehd0koq8uu68qltnir6b0mqgcehcu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hurry.hurry",
+            "certificate_hash": "eefd4de5af1bb6009f1f6189de6fd16dcf5a85f5"
+          }
+        },
+        {
+          "client_id": "976508719072-pfbdrq0glf458ke4lo20bh58op30e6qk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-8dacuNZPrIQOT9KBsKRrxLOuhZ3kRBo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976508719072-pfbdrq0glf458ke4lo20bh58op30e6qk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

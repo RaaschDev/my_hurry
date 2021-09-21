@@ -54,6 +54,13 @@ mixin _$EventsStore on _EventsStoreBase, Store {
     return _$getConsumablesAsyncAction.run(() => super.getConsumables(id));
   }
 
+  final _$getMapAsyncAction = AsyncAction('_EventsStoreBase.getMap');
+
+  @override
+  Future<void> getMap() {
+    return _$getMapAsyncAction.run(() => super.getMap());
+  }
+
   @override
   String toString() {
     return '''
